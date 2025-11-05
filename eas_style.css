@@ -5,19 +5,16 @@
 }
 
 #container{
-    border: 1px solid black;
-    max-width: 90%;
-    margin: 360px auto;
-    padding: 100px;
+    border: 2px solid black;
+    width: 560px;
+    height: 560px;
+    margin: 100px auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-content: center;
-    gap: 10px;
 }
 
 #container div{
-    border: 1px solid grey;
-    height: 50px;
-    min-width: 50px;
+border: 1px solid grey;
 }
