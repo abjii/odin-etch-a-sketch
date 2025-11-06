@@ -1,4 +1,4 @@
-const perRowBoxes = 121;
+const perRowBoxes = 10;
 const container = document.getElementById("container");
 const boxSize = 100 / perRowBoxes; //percentage of box width and height
 
@@ -9,6 +9,13 @@ function makeGrid() {
       div.style.width = boxSize + "%";
       div.style.height = boxSize + "%";
       container.appendChild(div);
+
+      div.addEventListener("mouseover", changeColor);
+
+      function changeColor(event) {
+        event.target.style.backgroundColor = "black";
+        console.log(event);
+      }
     }
   }
 }
