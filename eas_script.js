@@ -1,8 +1,11 @@
 // ====== GLOBAL VARIABLES ======
-let perRowBoxes = 16;
+const DEFAULT_SIZE = 16;
+
+let perRowboxes = DEFAULT_SIZE;
 let mouseDown = false;
 const nRowsButton = document.getElementById("nRowsButton");
 const container = document.getElementById("container");
+const clearButton = document.getElementById("clearButton");
 const h2 = document.getElementsByTagName("h2").item(0);
 const h3 = document.getElementsByTagName("h3").item(0);
 
@@ -16,16 +19,17 @@ document.addEventListener("mouseup", () => {
   console.log("mouseDown = false;");
 });
 
+clearButton.addEventListener("click", clearGrid);
 // ====== FUNCTION DECLARATION ======
-function makeGrid(perRowBoxes) {
+function makeGrid(perRowboxes) {
   container.innerHTML = "";
-  if (between(perRowBoxes, 0, 100)) {
-    h2.textContent = "Change number of pixels in grid";
-    h3.textContent = `(${perRowBoxes} x ${perRowBoxes})`;
+  if (between(perRowboxes, 0, 100)) {
+    h2.textContent = "Number of pixels in grid";
+    h3.textContent = `(${perRowboxes} x ${perRowboxes})`;
   }
-  const boxSize = 100 / perRowBoxes; // percentage width/height of each box
-  for (let i = 0; i < perRowBoxes; i++) {
-    for (let j = 0; j < perRowBoxes; j++) {
+  const boxSize = 100 / perRowboxes; // percentage width/height of each box
+  for (let i = 0; i < perRowboxes; i++) {
+    for (let j = 0; j < perRowboxes; j++) {
       const div = document.createElement("div");
       div.style.width = boxSize + "%";
       div.style.height = boxSize + "%";
@@ -48,9 +52,9 @@ function hoverColor(event) {
 }
 
 function setNewGrid() {
-  perRowBoxes = parseInt(prompt("How many boxes should be in the grid (choose a number under 100)"));
-  if (typeof perRowBoxes === "number" && between(perRowBoxes, 0, 100)) {
-    makeGrid(perRowBoxes);
+  perRowboxes = parseInt(prompt("How many boxes should be in the grid (choose a number under 100)"));
+  if (typeof perRowboxes === "number" && between(perRowboxes, 0, 100)) {
+    makeGrid(perRowboxes);
   } else {
     alert("Please enter a number between 1 and 99");
     makeGrid(0);
@@ -61,5 +65,9 @@ function between(x, min, max) {
   return x > min && x < max;
 }
 
+function clearGrid() {
+  makeGrid(perRowboxes);
+}
+
 // ====== CALLS ======
-makeGrid(perRowBoxes);
+makeGrid(perRowboxes);

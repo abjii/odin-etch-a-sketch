@@ -12,6 +12,11 @@
   text-align: center;
 }
 
+h2,
+h3 {
+  margin: 5px;
+}
+
 main {
   display: flex;
   flex-direction: row;
@@ -44,6 +49,7 @@ button {
   background-color: rgb(18, 18, 180);
   font-size: 25px;
   color: white;
+  margin-top: 20px;
 }
 
 .settings {
