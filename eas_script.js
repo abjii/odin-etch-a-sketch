@@ -1,10 +1,13 @@
 // ====== GLOBAL VARIABLES ======
 const DEFAULT_SIZE = 16;
-
 let perRowboxes = DEFAULT_SIZE;
 let mouseDown = false;
+
+// ====== DOM ELEMENTS ======
 const nRowsButton = document.getElementById("nRowsButton");
 const container = document.getElementById("container");
+const uniqueColorButton = document.getElementById("uniqueColorButton");
+const randomColorButton = document.getElementById("randomColorButton");
 const clearButton = document.getElementById("clearButton");
 const h2 = document.getElementsByTagName("h2").item(0);
 const h3 = document.getElementsByTagName("h3").item(0);
@@ -20,6 +23,8 @@ document.addEventListener("mouseup", () => {
 });
 
 clearButton.addEventListener("click", clearGrid);
+
+uniqueColorButton.addEventListener("click", () => {});
 // ====== FUNCTION DECLARATION ======
 function makeGrid(perRowboxes) {
   container.innerHTML = "";
