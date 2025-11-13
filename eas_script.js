@@ -2,33 +2,36 @@
 const DEFAULT_SIZE = 16;
 let perRowboxes = DEFAULT_SIZE;
 let mouseDown = false;
+let uniqueColorMode = true;
 
 // ====== DOM ELEMENTS ======
 const nRowsButton = document.getElementById("nRowsButton");
 const container = document.getElementById("container");
+const colorPicker = document.querySelector("#colorPicker");
 const uniqueColorButton = document.getElementById("uniqueColorButton");
 const randomColorButton = document.getElementById("randomColorButton");
 const clearButton = document.getElementById("clearButton");
 const h2 = document.getElementsByTagName("h2").item(0);
 const h3 = document.getElementsByTagName("h3").item(0);
-const colorPicker = document.querySelector("#colorPicker");
 
-console.log(colorPicker.value);
 // ====== EVENT DECLARATION ======
-nRowsButton.addEventListener("click", setNewGrid);
 document.addEventListener("mousedown", () => {
   mouseDown = true;
 });
 document.addEventListener("mouseup", () => {
   mouseDown = false;
-  console.log("mouseDown = false;");
 });
-
+nRowsButton.addEventListener("click", setNewGrid);
+uniqueColorButton.addEventListener("click", () => {
+  uniqueColorMode = true;
+});
+randomColorButton.addEventListener("click", () => {
+  uniqueColorMode = false;
+});
 clearButton.addEventListener("click", clearGrid);
 
-uniqueColorButton.addEventListener("click", () => {});
 // ====== FUNCTION DECLARATION ======
-function makeGrid(perRowboxes) {
+function makeGrid(perRowboxes, colorPicker) {
   container.innerHTML = "";
   if (between(perRowboxes, 0, 100)) {
     h2.textContent = "Number of pixels in grid";
@@ -48,13 +51,14 @@ function makeGrid(perRowboxes) {
 }
 
 function changeColor(event) {
-  event.target.style.backgroundColor = colorPicker.value;
-  console.log("mouse down so colouring");
+  if (uniqueColorMode) event.target.style.backgroundColor = colorPicker.value;
+  else event.target.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
 }
 
 function hoverColor(event) {
   if (mouseDown) {
-    event.target.style.backgroundColor = colorPicker.value;
+    if (uniqueColorMode) event.target.style.backgroundColor = colorPicker.value;
+    else event.target.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
 }
 
