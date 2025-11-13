@@ -11,7 +11,9 @@ const randomColorButton = document.getElementById("randomColorButton");
 const clearButton = document.getElementById("clearButton");
 const h2 = document.getElementsByTagName("h2").item(0);
 const h3 = document.getElementsByTagName("h3").item(0);
+const colorPicker = document.querySelector("#colorPicker");
 
+console.log(colorPicker.value);
 // ====== EVENT DECLARATION ======
 nRowsButton.addEventListener("click", setNewGrid);
 document.addEventListener("mousedown", () => {
@@ -46,13 +48,13 @@ function makeGrid(perRowboxes) {
 }
 
 function changeColor(event) {
-  event.target.style.backgroundColor = "black";
+  event.target.style.backgroundColor = colorPicker.value;
   console.log("mouse down so colouring");
 }
 
 function hoverColor(event) {
   if (mouseDown) {
-    event.target.style.backgroundColor = "black";
+    event.target.style.backgroundColor = colorPicker.value;
   }
 }
 

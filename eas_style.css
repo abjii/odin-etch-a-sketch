@@ -20,7 +20,7 @@ h3 {
 main {
   display: flex;
   flex-direction: row;
-  width: 1000px;
+  width: 850px;
   margin: 0 auto;
 }
 
@@ -59,10 +59,9 @@ button {
 }
 
 .settings > button {
-  font-size: 20px;
-  margin: 10px;
+  font-size: 15px;
   height: 72px;
-  width: 100%;
+  width: 88%;
 }
 
 button,
