@@ -15,10 +15,16 @@ const h2 = document.getElementsByTagName("h2").item(0);
 const h3 = document.getElementsByTagName("h3").item(0);
 
 // ====== EVENT DECLARATION ======
-document.addEventListener("mousedown", () => {
-  mouseDown = true;
-});
+document.addEventListener(
+  "mousedown",
+  () => {
+    console.log("mouseDown = true");
+    mouseDown = true;
+  },
+  true
+);
 document.addEventListener("mouseup", () => {
+  console.log("mouseDown = false");
   mouseDown = false;
 });
 nRowsButton.addEventListener("click", setNewGrid);
@@ -44,19 +50,16 @@ function makeGrid(perRowboxes, colorPicker) {
       div.style.width = boxSize + "%";
       div.style.height = boxSize + "%";
       div.addEventListener("mousedown", changeColor);
-      div.addEventListener("mouseover", hoverColor);
+      div.addEventListener("mouseover", changeColor);
       container.appendChild(div);
     }
   }
 }
 
 function changeColor(event) {
-  if (uniqueColorMode) event.target.style.backgroundColor = colorPicker.value;
-  else event.target.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
-}
-
-function hoverColor(event) {
+  console.log("mouseDown" + mouseDown);
   if (mouseDown) {
+    console.log("changing color");
     if (uniqueColorMode) event.target.style.backgroundColor = colorPicker.value;
     else event.target.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
   }
